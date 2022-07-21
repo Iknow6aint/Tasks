@@ -1,21 +1,33 @@
-function getSum(arr){
-    const n = arr.length
-    let odd = 0;
-    for (let i = 0; i < n ; i++) {
-        
-        if (i%2 ==0) {
-            even += arr[i]
-        } else {
-            odd += arr[1]
-        }
-    }
-  console.log(`[${even},${odd}]`);
- 
+function isArry(arry){
+    return Array.isArray(arry);
+}
+function isPositive (num){
+    return Math.sign(num) ===1;
 }
 
-let arr = [1,2,3,4,5,6,'saint'];
-const filter = arr.filter(num => num > 0 && num % parseInt(num) === 0)
-let even = 0;
+//const filter = arr.filter(num => num > 0 && num % parseInt(num) === 0)
 
-getSum(filter);
+function sumOfNumbers(arry){
+    if (!isArry(arry)) {
+        return 'error'
+    } else {
+        let odds = 0;
+        let even = 0;
+        let filtered = arry.filter(i=>{return isPositive})
+        filtered = filtered
+            .sort((a,b)=> a-b)
+            .map(i=>{ 
+                return parseInt(i)
+            });
+        for (let i = 0; i < filtered.length; i++) {
+            if (filtered[i] % 2 === 0){
+                even +=filtered[i];
+            }else{
+                odds += filtered[i];
+            }
+          }
+          return [even, odds];
+    }
+}
 
+console.log(sumOfNumbers([1, 2, 3, 4, "a", "5", "6"]));
